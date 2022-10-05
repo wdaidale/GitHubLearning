@@ -1,0 +1,67 @@
+select month(replace(replace(replace('2013年10月21日'),'年'，'-'),'月','-'),'日',''));
+
+create database question2
+on primary
+(
+     name='question2_data',
+     filename='C:\temp\question2_data.ldf',
+     size=6MB,
+     maxsize=12MB,
+    filegrowth=10%
+)
+log on
+(
+name='question2_log',
+filename='C:\temp\question2_log.ldf',
+size='C:\tep\question2_log.ldf',
+maxsize=12MB,
+filegrowth=5%
+)
+use question2
+create table city
+(
+   CityCOde char(4) primary key ,
+   CityName varchar(80) not null
+);
+create table category
+(
+   CategoryID int primary key,
+   CategoryName varchar(50) not null
+);
+alter table city add CitySurvey varchar(110);
+
+alter table city alter column CItySurvey varchar(100);
+
+alter table city drop column CItySurvey;
+
+drop table city;
+drop tabl category;
+
+use master;
+
+drop database question2;
+
+use examDB
+
+insert into city(CityCode , CityName)values('MSD','山东');
+
+update publishers set Phone='0755-56556565' where PubCode='DGZC';
+
+delete from city where CItyCode='MSD';
+
+select * from titles order by CategoryID desc; 
+ele
+select destinct CategoryID from titles;
+
+select TitleName ,PubDate from titles where month(PubDate) between 3 and 6 order by month(PubDate)；
+
+select CityCode，CityName from city where CityName in('沈阳','深圳',‘青岛')
+
+select PubName,Address from publishers where Address like '%北京%';
+
+select CItyCOde,CityName from city where CityCode like'_G%';
+
+
+select LEFT(TitleName ,6)as '前6位' from titles;
+
+select ROUND(34.255,2),ROUND(34.222,2);
